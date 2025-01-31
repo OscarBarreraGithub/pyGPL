@@ -1,14 +1,15 @@
 from setuptools import setup, Extension
 import pybind11
+import os
 
 ext_modules = [
     Extension(
         "pyGPL.pyGPL",
         ["bindings/fastgpl_bind.cpp"],
-        include_dirs=[pybind11.get_include(), "/usr/local/include"],
+        include_dirs=[pybind11.get_include(), os.path.join(os.path.dirname(__file__), "include")],
         libraries=["FastGPL"],
         library_dirs=["/usr/local/lib"],
-        extra_compile_args=["-std=c++17", "-O3", "-shared", "-fPIC"]
+        extra_compile_args=["-std=c++17", "-O3", "-fPIC"]  # Removed "-shared" for macOS
     )
 ]
 
