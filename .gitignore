@@ -35,3 +35,12 @@ cmake-*
 *.exe
 *.out
 *.app
+
+__pycache__/
+*.so
+*.o
+*.dSYM
+/build/
+/dist/
+*.egg-info
+

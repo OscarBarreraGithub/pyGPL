@@ -1,4 +1,6 @@
-# FastGPL
+#pyGPL is a Python wrapper for FastGPL
+
+FastGPL
 
 A C++ library for fast evaluation of generalized polylogarithms (up to weight-6 at the moment).
 

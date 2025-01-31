@@ -1,0 +1,2 @@
+from .pyGPL import GPL
+
