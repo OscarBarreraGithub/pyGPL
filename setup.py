@@ -2,14 +2,20 @@ from setuptools import setup, Extension
 import pybind11
 import os
 
+# Require a Conda environment
+CONDA_PREFIX = os.getenv("CONDA_PREFIX")
+if not CONDA_PREFIX:
+    raise RuntimeError("FastGPL must be installed inside a Conda environment. Run `conda activate pyGPL` first.")
+
 ext_modules = [
     Extension(
         "pyGPL.pyGPL",
         ["bindings/fastgpl_bind.cpp"],
-        include_dirs=[pybind11.get_include(), os.path.join(os.path.dirname(__file__), "include")],
+        include_dirs=[pybind11.get_include(), f"{CONDA_PREFIX}/include"],
         libraries=["FastGPL"],
-        library_dirs=["/usr/local/lib"],
-        extra_compile_args=["-std=c++17", "-O3", "-fPIC"]  # Removed "-shared" for macOS
+        library_dirs=[f"{CONDA_PREFIX}/lib"],
+        extra_link_args=[f"-Wl,-rpath,{CONDA_PREFIX}/lib"],
+        extra_compile_args=["-std=c++17", "-O3", "-fPIC"]
     )
 ]
 
