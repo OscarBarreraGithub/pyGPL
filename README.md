@@ -16,6 +16,6 @@ FastGPL is a **C++ library for fast GPL evaluation**, and this project only prov
 Clone the repository and install using `pip`:
 
 ```bash
-git clone https://github.com/YOUR_GITHUB_USERNAME/FastGPL.git
-cd FastGPL
+git clone https://github.com/OscarBarreraGithub/pyGPL.git
+cd pyGPL
 pip install .
